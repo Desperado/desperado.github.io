@@ -1,1 +1,171 @@
-Hello World
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ruslan Strazhnyk</title>
+    <style>
+        /* General Styles */
+        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+        body {
+            font-family: 'Poppins', Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f7f8fa;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Header Section */
+        header {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        header h1 {
+            font-size: 3rem;
+            font-weight: 600;
+            color: #333;
+            letter-spacing: 2px;
+        }
+        header p {
+            font-size: 1.2rem;
+            color: #666;
+            margin-top: 0.5rem;
+        }
+
+        /* Photo Section */
+        .photo {
+            text-align: center;
+            margin: 2rem 0;
+        }
+        .photo img {
+            width: 250px;
+            height: 250px;
+            border-radius: 50%;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: #222;
+            text-transform: uppercase;
+            text-align: center;
+            letter-spacing: 1px;
+            margin-bottom: 1rem;
+        }
+
+        /* About Me Section */
+        #about-me p {
+            font-size: 1.1rem;
+            color: #444;
+            text-align: justify;
+            margin: 0 auto;
+            max-width: 750px;
+            line-height: 1.8;
+        }
+
+        /* Projects Section */
+        #projects ul {
+            list-style: none;
+            padding: 0;
+            text-align: justify;
+            max-width: 750px;
+            margin: 0 auto;
+        }
+        #projects li {
+            margin-bottom: 1rem;
+        }
+        #projects a {
+            text-decoration: none;
+            color: #0073e6;
+            font-weight: 500;
+        }
+        #projects a:hover {
+            text-decoration: underline;
+        }
+
+        /* Contact Section */
+        #contact {
+            text-align: justify;
+            margin-top: 3rem;
+        }
+        #contact p {
+            font-size: 1rem;
+            text-align: justify;
+            margin: 0 auto;
+            max-width: 750px;
+        }
+        #contact a {
+            text-decoration: none;
+            text-align: justify;
+            color: #0073e6;
+            font-weight: 500;
+            margin: 0 auto;
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem 0;
+            font-size: 0.9rem;
+            color: #666;
+            border-top: 1px solid #ddd;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Header Section -->
+        <header>
+            <h1>Ruslan Strazhnyk</h1>
+            <p>QA Engineering Manager | Quality Advocate | Coach in Testing</p>
+        </header>
+
+        <!-- Photo Section -->
+        <section class="photo">
+            <img src="images/S_Ruslan_profile_photo.jpg" alt="Ruslan's Photo">
+        </section>
+
+        <!-- About Me Section -->
+        <section id="about-me">
+            <h2 class="section-title">About Me</h2>
+            <p>
+                My name is Ruslan, and I am a seasoned Tech Leader and expert in Quality Assurance and Software Delivery based in Berlin. 
+                I have nearly 20 years of experience in IT, having worked at many startups. I advocate for Agile testing and Shift-left testing strategies. 
+                I also work as a Coach in Testing and Software Quality Assurance. In my free time, I enjoy music, cinema, travelling, and playing indie computer games.
+            </p>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">Projects</h2>
+            <ul>
+                <li><a href="https://www.slideshare.net/slideshow/selenium-practical-11743346/11743346" target="_blank">Presentation 1: Selenium in Continuous Integration Environment</a></li>
+                <li><a href="https://www.linkedin.com/in/ruslanstraznhyk/overlay/50043164/single-media-viewer/" target="_blank">Presentation 2: Full Featured Test Automation using Selenium Grid and Continuous Integration</a></li>
+                <li><a href="https://www.linkedin.com/in/ruslanstraznhyk/overlay/50043164/single-media-viewer/?profileId=ACoAAAC1W6MBhMtNX31vG0WNgDoDwLMuNK5pROY" target="_blank">Presentation 3: Making Watir and Cucumber an Efficient Tool for Web UI Automation</a></li>
+                <li>Visit my GitHub profile for more projects: <a href="https://github.com/Desperado" target="_blank">GitHub Profile</a>.</li>
+            </ul>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact">
+            <h2 class="section-title">Contact</h2>
+            <p>Email: <a href="mailto:strazhnyk@gmail.com">strazhnyk@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/ruslanstraznhyk/" target="_blank">My LinkedIn Profile</a></p>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        &copy; 2024 Ruslan S. All rights reserved.
+    </footer>
+</body>
+</html>
