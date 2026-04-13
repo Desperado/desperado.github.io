@@ -5,309 +5,519 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Ruslan Strazhnyk</title>
     <style>
-        /* General Styles */
-        @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
-        body {
-            font-family: 'Poppins', Arial, sans-serif;
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&display=swap');
+
+        *, *::before, *::after {
+            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            background-color: #f7f8fa;
-            color: #333;
-            line-height: 1.6;
+        }
+
+        body {
+            font-family: 'JetBrains Mono', monospace;
+            background-color: #0a0a0a;
+            color: #c8c8c8;
+            line-height: 1.7;
+            font-size: 15px;
+        }
+
+        ::selection {
+            background: #00ff8820;
+            color: #00ff88;
+        }
+
+        a {
+            color: #00ff88;
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        a:hover {
+            color: #fff;
         }
 
         .container {
-            max-width: 900px;
+            max-width: 820px;
             margin: 0 auto;
-            padding: 2rem;
+            padding: 3rem 2rem;
         }
 
-        /* Header Section */
+        /* Terminal cursor blink */
+        @keyframes blink {
+            0%, 50% { opacity: 1; }
+            51%, 100% { opacity: 0; }
+        }
+        .cursor {
+            display: inline-block;
+            width: 10px;
+            height: 1.2em;
+            background: #00ff88;
+            vertical-align: text-bottom;
+            animation: blink 1s infinite;
+            margin-left: 4px;
+        }
+
+        /* Header */
         header {
-            text-align: center;
-            margin: 2rem 0;
+            margin-bottom: 3rem;
+            border-bottom: 1px solid #222;
+            padding-bottom: 2rem;
+        }
+        .prompt {
+            color: #555;
+            font-size: 0.85rem;
+            margin-bottom: 0.5rem;
         }
         header h1 {
-            font-size: 3rem;
-            font-weight: 600;
-            color: #333;
-            letter-spacing: 2px;
+            font-size: 2.4rem;
+            font-weight: 700;
+            color: #fff;
+            letter-spacing: -0.5px;
+            margin-bottom: 0.3rem;
         }
-        header p {
-            font-size: 1.2rem;
-            color: #666;
+        header .subtitle {
+            color: #00ff88;
+            font-size: 1rem;
+            font-weight: 400;
+        }
+        header .location {
+            color: #555;
+            font-size: 0.85rem;
             margin-top: 0.5rem;
         }
 
-        /* Photo Section */
+        /* Photo */
         .photo {
             text-align: center;
-            margin: 2rem 0;
+            margin-bottom: 3rem;
         }
         .photo img {
-            width: 250px;
-            height: 250px;
+            width: 180px;
+            height: 180px;
             border-radius: 50%;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            border: 2px solid #222;
+            filter: grayscale(20%);
+            transition: filter 0.3s, border-color 0.3s;
+        }
+        .photo img:hover {
+            filter: grayscale(0%);
+            border-color: #00ff88;
         }
 
-        /* Section Titles */
+        /* Sections */
+        section {
+            margin-bottom: 3rem;
+        }
         .section-title {
-            font-size: 1.8rem;
-            font-weight: 600;
-            color: #222;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: #00ff88;
             text-transform: uppercase;
-            text-align: center;
-            letter-spacing: 1px;
-            margin-bottom: 1rem;
+            letter-spacing: 3px;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 1px solid #1a1a1a;
+        }
+        .section-title::before {
+            content: "> ";
+            color: #333;
         }
 
-        /* About Me Section */
-        #about-me p {
+        /* About */
+        #about p {
+            color: #888;
+            font-size: 0.9rem;
+            margin-bottom: 1rem;
+            max-width: 720px;
+        }
+
+        /* Products */
+        .product-card {
+            border: 1px solid #1a1a1a;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            background: #0f0f0f;
+            transition: border-color 0.3s, background 0.3s;
+        }
+        .product-card:hover {
+            border-color: #00ff88;
+            background: #111;
+        }
+        .product-card h3 {
+            color: #fff;
             font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 0.3rem;
+        }
+        .product-card .tagline {
+            color: #00ff88;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+        .product-card p {
+            color: #777;
+            font-size: 0.85rem;
+            margin-bottom: 0.8rem;
+        }
+        .product-card .tech {
             color: #444;
-            text-align: justify;
-            margin: 0 auto;
-            max-width: 750px;
-            line-height: 1.8;
+            font-size: 0.78rem;
+        }
+        .product-card .link {
+            display: inline-block;
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: #00ff88;
+            border: 1px solid #00ff8840;
+            padding: 0.3rem 0.8rem;
+            transition: background 0.2s, color 0.2s;
+        }
+        .product-card .link:hover {
+            background: #00ff88;
+            color: #0a0a0a;
+        }
+        .install-cmd {
+            background: #111;
+            border: 1px solid #222;
+            padding: 0.6rem 1rem;
+            font-size: 0.82rem;
+            color: #00ff88;
+            margin-top: 0.8rem;
+            display: inline-block;
+            cursor: pointer;
+            user-select: all;
         }
 
-        /* Projects Section */
-        #projects ul {
-            list-style: none;
-            padding: 0;
-            text-align: justify;
-            max-width: 750px;
-            margin: 0 auto;
+        /* Experience */
+        .job {
+            margin-bottom: 1.5rem;
+            padding-left: 1rem;
+            border-left: 1px solid #1a1a1a;
+            transition: border-color 0.3s;
         }
-        #projects li {
+        .job:hover {
+            border-left-color: #00ff88;
+        }
+        .job h3 {
+            color: #ddd;
+            font-size: 0.95rem;
+            font-weight: 500;
+        }
+        .job .meta {
+            color: #444;
+            font-size: 0.8rem;
+            margin-bottom: 0.3rem;
+        }
+        .job .desc {
+            color: #666;
+            font-size: 0.82rem;
+            font-style: italic;
+        }
+        .job .tech {
+            color: #444;
+            font-size: 0.78rem;
+            margin-top: 0.2rem;
+        }
+
+        /* Education */
+        .edu {
             margin-bottom: 1rem;
         }
-        #projects a {
-            text-decoration: none;
-            color: #085c3d;
+        .edu h3 {
+            color: #ddd;
+            font-size: 0.95rem;
             font-weight: 500;
         }
-        #projects a:hover {
-            text-decoration: underline;
+        .edu .meta {
+            color: #444;
+            font-size: 0.8rem;
         }
 
-        /* Contact Section */
-        #contact {
-            text-align: justify;
-            margin-top: 3rem;
+        /* Presentations */
+        .talks {
+            list-style: none;
         }
-        #contact p {
-            font-size: 1rem;
-            text-align: justify;
-            margin: 0 auto;
-            max-width: 750px;
+        .talks li {
+            margin-bottom: 0.8rem;
+            font-size: 0.88rem;
         }
-        #contact a {
-            text-decoration: none;
-            text-align: justify;
-            color: #085c3d;
-            font-weight: 500;
-            margin: 0 auto;
+        .talks li::before {
+            content: "$ ";
+            color: #333;
         }
 
-        /* Experience Section */
-        #experience h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
+        /* Contact */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
         }
-        #education h3 {
-            font-size: 1.15rem;
-            font-weight: 600;
+        .contact-item {
+            font-size: 0.88rem;
+        }
+        .contact-item .label {
+            color: #444;
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
         /* Footer */
         footer {
+            border-top: 1px solid #1a1a1a;
+            padding-top: 1.5rem;
+            margin-top: 2rem;
+            font-size: 0.78rem;
+            color: #333;
             text-align: center;
-            padding: 2rem 0;
-            font-size: 0.9rem;
-            color: #666;
-            border-top: 1px solid #ddd;
+        }
+
+        /* Responsive */
+        @media (max-width: 600px) {
+            .container {
+                padding: 2rem 1.2rem;
+            }
+            header h1 {
+                font-size: 1.8rem;
+            }
+            .contact-grid {
+                flex-direction: column;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <!-- Header Section -->
+
+        <!-- Header -->
         <header>
-            <h1>Ruslan Strazhnyk</h1>
-            <p>Quality Assurance Expert | Quality Engineering Lead</p>
-            <p style="font-size: 0.95rem; color: #888;">Berlin, Germany</p>
+            <div class="prompt">$ whoami</div>
+            <h1>Ruslan Strazhnyk<span class="cursor"></span></h1>
+            <div class="subtitle">Quality Assurance Expert | Quality Engineering Lead</div>
+            <div class="location">Berlin, Germany &mdash; International Conference Speaker</div>
         </header>
 
-        <!-- Photo Section -->
+        <!-- Photo -->
         <section class="photo">
-            <img src="images/S_Ruslan_profile_photo.jpg" alt="Ruslan's Photo">
+            <img src="images/S_Ruslan_profile_photo.jpg" alt="Ruslan Strazhnyk">
         </section>
 
-        <!-- About Me Section -->
-        <section id="about-me">
-            <h2 class="section-title">About Me</h2>
+        <!-- About -->
+        <section id="about">
+            <h2 class="section-title">About</h2>
             <p>
-                Seasoned Engineering Leader with 18 years of comprehensive experience driving excellence and quality within engineering teams. Adept at leading cross-functional teams to achieve strategic goals through effective Quality Engineering and Shift-Left Testing methodologies. Expertise spans automated testing across front-end, back-end, web, and mobile platforms, with proven success in designing and deploying custom Continuous Integration solutions that seamlessly integrate Test Automation into development lifecycles.
+                Seasoned Engineering Leader with 18 years of comprehensive experience driving excellence and quality within engineering teams. Adept at leading cross-functional teams to achieve strategic goals through effective Quality Engineering and Shift-Left Testing methodologies. Expertise spans automated testing across front-end, back-end, web, and mobile platforms.
             </p>
             <p>
-                Demonstrated ability to develop and execute company-wide engineering and quality strategies, fostering cultures of continuous improvement and innovation. Skilled in Agile-driven product development coordination, complex problem-solving, and creation of scalable testing frameworks. Experienced in hiring, managing, and mentoring engineering teams with strong focus on knowledge-sharing and professional growth. International conference speaker at Selenium Camp (Kyiv) and Software QS-TAG (Nuremberg).
+                Proven success in designing and deploying custom CI solutions that seamlessly integrate Test Automation into development lifecycles. Experienced in hiring, managing, and mentoring engineering teams. International conference speaker at Selenium Camp (Kyiv) and Software QS-TAG (Nuremberg).
             </p>
         </section>
 
-        <!-- Experience Section -->
+        <!-- Products -->
+        <section id="products">
+            <h2 class="section-title">Products</h2>
+
+            <div class="product-card">
+                <h3>QualityMax</h3>
+                <div class="tagline">AI-Powered Test Automation for Modern Teams</div>
+                <p>
+                    Web, mobile, API, performance, security &mdash; one platform. Generate Playwright tests from specs, push to GitHub, auto-test every deploy. Self-healing scripts, visual regression, quality gates, and CI/CD integration out of the box.
+                </p>
+                <div class="tech">Python/FastAPI &middot; Vue.js &middot; OpenAI/NLTK &middot; Playwright/Cypress &middot; PostgreSQL</div>
+                <br>
+                <a href="https://qualitymax.io" target="_blank" class="link">qualitymax.io &rarr;</a>
+            </div>
+
+            <div class="product-card">
+                <h3>qmax-code</h3>
+                <div class="tagline">The first AI testing agent built for your terminal</div>
+                <p>
+                    Generate, execute, and manage tests through natural language. AI-powered web crawling with vision, automatic Playwright test generation, k6 load testing, self-healing failures, and 50+ integrated tools &mdash; all from the command line.
+                </p>
+                <div class="tech">15MB &middot; Zero dependencies &middot; macOS &middot; Linux &middot; Windows</div>
+                <div class="install-cmd">$ curl -sL https://qualitymax.io/static/install-qmax-code.txt | bash</div>
+                <br><br>
+                <a href="https://qualitymax.io/qmax-code" target="_blank" class="link">Learn more &rarr;</a>
+            </div>
+        </section>
+
+        <!-- Experience -->
         <section id="experience">
             <h2 class="section-title">Experience</h2>
-            <div style="max-width: 750px; margin: 0 auto;">
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Quality Max &mdash; Founder &amp; CEO</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | April 2025 &ndash; Present</p>
-                    <p style="font-style: italic; color: #555;">AI-Powered QA Platform leveraging RAG technology for intelligent test generation and comprehensive test automation.</p>
-                    <p style="font-size: 0.95rem; color: #555;"><strong>Tech:</strong> Python/FastAPI, Vue.js, OpenAI/NLTK/Giskard, Playwright/Cypress/pytest, PostgreSQL (Supabase)</p>
-                </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Deutsche Bank AG &mdash; Senior QA Engineer (AVP)</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | May 2025 &ndash; December 2025</p>
-                    <p style="font-style: italic; color: #555;">Advancing quality assurance practices within the Corporate Bank Technology division.</p>
-                    <p style="font-size: 0.95rem; color: #555;"><strong>Tech:</strong> Java Spring Boot, Kotlin, Cucumber, JUnit, GitHub, GCP</p>
-                </div>
+            <div class="job">
+                <h3>Quality Max &mdash; Founder &amp; CEO</h3>
+                <div class="meta">Berlin | Apr 2025 &ndash; Present</div>
+                <div class="desc">AI-Powered QA Platform leveraging RAG technology for intelligent test generation and comprehensive test automation.</div>
+                <div class="tech">Python/FastAPI &middot; Vue.js &middot; OpenAI/NLTK/Giskard &middot; Playwright/Cypress/pytest &middot; PostgreSQL</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Quandoo GmbH &mdash; QA Engineering Lead</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | August 2022 &ndash; December 2024</p>
-                    <p style="font-style: italic; color: #555;">Leading restaurant booking service with global coverage across 12 countries, serving 150M+ diners in 18,000+ restaurants.</p>
-                    <p style="font-size: 0.95rem; color: #555;"><strong>Tech:</strong> Playwright, k6, JavaScript, TypeScript</p>
-                </div>
+            <div class="job">
+                <h3>Deutsche Bank AG &mdash; Senior QA Engineer (AVP)</h3>
+                <div class="meta">Berlin | May 2025 &ndash; Dec 2025</div>
+                <div class="desc">Advancing quality assurance practices within the Corporate Bank Technology division.</div>
+                <div class="tech">Java Spring Boot &middot; Kotlin &middot; Cucumber &middot; JUnit &middot; GitHub &middot; GCP</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Nuri GmbH (Bitwala) &mdash; Lead QA Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | May 2021 &ndash; August 2022</p>
-                    <p style="font-style: italic; color: #555;">Modern banking platform with easy cryptocurrency access, bitcoin interest, and full German bank account.</p>
-                </div>
+            <div class="job">
+                <h3>Quandoo GmbH &mdash; QA Engineering Lead</h3>
+                <div class="meta">Berlin | Aug 2022 &ndash; Dec 2024</div>
+                <div class="desc">Leading restaurant booking service across 12 countries, serving 150M+ diners in 18,000+ restaurants.</div>
+                <div class="tech">Playwright &middot; k6 &middot; JavaScript &middot; TypeScript</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Caspar Health &mdash; Senior QA Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | December 2019 &ndash; April 2021</p>
-                    <p style="font-style: italic; color: #555;">Medical rehabilitation and prevention therapy platform bringing healthcare services online.</p>
-                    <p style="font-size: 0.95rem; color: #555;"><strong>Tech:</strong> Ruby on Rails, Cypress.io, GitHub Actions, Docker, Kubernetes, AWS</p>
-                </div>
+            <div class="job">
+                <h3>Nuri GmbH (Bitwala) &mdash; Lead QA Engineer</h3>
+                <div class="meta">Berlin | May 2021 &ndash; Aug 2022</div>
+                <div class="desc">Modern banking platform with cryptocurrency access. Led QA Guild across 7 engineering squads.</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Elinvar GmbH &mdash; Senior Test Automation Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | June 2019 &ndash; December 2019</p>
-                    <p style="font-style: italic; color: #555;">Enabling Asset &amp; Wealth Managers to digitize their business models.</p>
-                </div>
+            <div class="job">
+                <h3>Caspar Health &mdash; Senior QA Engineer</h3>
+                <div class="meta">Berlin | Dec 2019 &ndash; Apr 2021</div>
+                <div class="desc">Medical rehabilitation platform. Built test automation strategy with Cypress and GitHub Actions.</div>
+                <div class="tech">Ruby on Rails &middot; Cypress.io &middot; GitHub Actions &middot; Docker &middot; Kubernetes &middot; AWS</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Neufund &mdash; Lead QA</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | January 2019 &ndash; May 2019</p>
-                    <p style="font-style: italic; color: #555;">Equity fundraising platform on the Blockchain.</p>
-                </div>
+            <div class="job">
+                <h3>Elinvar GmbH &mdash; Senior Test Automation Engineer</h3>
+                <div class="meta">Berlin | Jun 2019 &ndash; Dec 2019</div>
+                <div class="desc">Enabling Asset &amp; Wealth Managers to digitize their business models.</div>
+                <div class="tech">Java &middot; Cypress.io &middot; Kafka &middot; Docker &middot; Kubernetes &middot; JMeter &middot; AWS</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Cubits &mdash; Senior QA</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Berlin, Germany | July 2018 &ndash; December 2018</p>
-                    <p style="font-style: italic; color: #555;">Multi-purpose cryptocurrency platform.</p>
-                </div>
+            <div class="job">
+                <h3>Neufund &mdash; Lead QA</h3>
+                <div class="meta">Berlin | Jan 2019 &ndash; May 2019</div>
+                <div class="desc">Equity fundraising platform on the Blockchain.</div>
+                <div class="tech">JavaScript &middot; Python &middot; Ethereum &middot; Docker</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Apica AB &mdash; Lead QA Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Stockholm, Sweden | February 2017 &ndash; July 2018</p>
-                    <p style="font-style: italic; color: #555;">Performance monitoring and load testing solutions.</p>
-                </div>
+            <div class="job">
+                <h3>Cubits &mdash; Senior QA</h3>
+                <div class="meta">Berlin | Jul 2018 &ndash; Dec 2018</div>
+                <div class="desc">Multi-purpose cryptocurrency platform.</div>
+                <div class="tech">Ruby &middot; Rails &middot; Capybara &middot; Cucumber &middot; Docker &middot; Kubernetes &middot; Blockchain</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Severalnines &mdash; Senior/Lead Test Automation Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Remote | June 2016 &ndash; January 2017</p>
-                    <p style="font-style: italic; color: #555;">Automation and management software for database clusters.</p>
-                </div>
+            <div class="job">
+                <h3>Apica AB &mdash; Lead QA Engineer</h3>
+                <div class="meta">Stockholm | Feb 2017 &ndash; Jul 2018</div>
+                <div class="desc">Performance monitoring and load testing. Mission-critical backend testing.</div>
+                <div class="tech">Python &middot; JavaScript &middot; JMeter &middot; AWS &middot; MongoDB &middot; Docker</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Cipherhealth &mdash; Lead QA Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Remote | June 2015 &ndash; June 2016</p>
-                    <p style="font-style: italic; color: #555;">Leading healthcare technology company implementing innovative communication solutions.</p>
-                </div>
+            <div class="job">
+                <h3>Severalnines &mdash; Senior/Lead Test Automation Engineer</h3>
+                <div class="meta">Remote | Jun 2016 &ndash; Jan 2017</div>
+                <div class="desc">Automation and management software for database clusters.</div>
+                <div class="tech">Node.js &middot; cucumber.js &middot; Angular &middot; DigitalOcean &middot; AWS &middot; MySQL &middot; MongoDB</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">SolanoLabs &mdash; Senior Test Automation Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Remote | February 2015 &ndash; May 2015</p>
-                    <p style="font-style: italic; color: #555;">Commercial hosted CI/CD SaaS platform with patented parallelization technology.</p>
-                </div>
+            <div class="job">
+                <h3>Cipherhealth &mdash; Lead QA Engineer</h3>
+                <div class="meta">Remote | Jun 2015 &ndash; Jun 2016</div>
+                <div class="desc">Healthcare technology. Full test automation coverage of WebUI and iOS mobile app from scratch.</div>
+                <div class="tech">Ruby on Rails &middot; Cucumber &middot; Jenkins &middot; JMeter &middot; Appium &middot; Docker</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">nCryptedCloud LLC &mdash; QA Test Automation Lead</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Remote | September 2014 &ndash; February 2015</p>
-                    <p style="font-style: italic; color: #555;">Security and collaboration layer for cloud data providers.</p>
-                </div>
+            <div class="job">
+                <h3>SolanoLabs &mdash; Senior Test Automation Engineer</h3>
+                <div class="meta">Remote | Feb 2015 &ndash; May 2015</div>
+                <div class="desc">Hosted CI/CD SaaS platform with patented parallelization technology.</div>
+                <div class="tech">Ruby on Rails &middot; Cucumber &middot; RSpec &middot; Capybara &middot; PostgreSQL</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Indigitus AG &mdash; QA Test Automation Lead</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Remote (via Ciklum) | December 2013 &ndash; August 2014</p>
-                    <p style="font-style: italic; color: #555;">IaaS start-up &mdash; built QA and CI processes from scratch.</p>
-                </div>
+            <div class="job">
+                <h3>nCryptedCloud LLC &mdash; QA Test Automation Lead</h3>
+                <div class="meta">Remote | Sep 2014 &ndash; Feb 2015</div>
+                <div class="desc">Security and collaboration layer for cloud data providers.</div>
+                <div class="tech">Ruby &middot; Cucumber &middot; Watir</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">Maven Research Inc. &mdash; QA Test Automation Architect</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">Remote | May 2010 &ndash; November 2013</p>
-                    <p style="font-style: italic; color: #555;">Custom WebUI testing frameworks with Selenium and Jenkins CI integration.</p>
-                </div>
+            <div class="job">
+                <h3>Indigitus AG &mdash; QA Test Automation Lead</h3>
+                <div class="meta">Remote (via Ciklum) | Dec 2013 &ndash; Aug 2014</div>
+                <div class="desc">IaaS start-up. Built QA and CI processes from zero stage.</div>
+                <div class="tech">OpenStack &middot; Python &middot; JMeter &middot; Ruby &middot; Cucumber &middot; Watir &middot; Jenkins</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">N-iX &mdash; QA Technical Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">June 2008 &ndash; February 2010</p>
-                    <p style="font-style: italic; color: #555;">Anoto Digital Pen Project &mdash; Python and Selenium automation frameworks.</p>
-                </div>
+            <div class="job">
+                <h3>Maven Research Inc. &mdash; QA Test Automation Architect</h3>
+                <div class="meta">Remote | May 2010 &ndash; Nov 2013</div>
+                <div class="desc">Custom WebUI testing frameworks with Selenium Grid and Jenkins CI integration.</div>
+                <div class="tech">Python &middot; Selenium WebDriver &middot; MySQL &middot; Jenkins &middot; JMeter</div>
+            </div>
 
-                <div style="margin-bottom: 2rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">SoftServe Inc. &mdash; QA Automation Engineer</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">January 2007 &ndash; June 2008</p>
-                    <p style="font-style: italic; color: #555;">Cisco IronPort Team &mdash; automation frameworks and Selenium R&amp;D.</p>
-                </div>
+            <div class="job">
+                <h3>N-iX &mdash; QA Technical Engineer</h3>
+                <div class="meta">Jun 2008 &ndash; Feb 2010</div>
+                <div class="desc">Anoto Digital Pen Project. Created Python and Selenium automation frameworks from scratch.</div>
+                <div class="tech">Python &middot; Selenium &middot; Jython &middot; J2EE &middot; C++</div>
+            </div>
+
+            <div class="job">
+                <h3>SoftServe Inc. &mdash; QA Automation Engineer</h3>
+                <div class="meta">Jan 2007 &ndash; Jun 2008</div>
+                <div class="desc">Cisco IronPort Team. Selenium R&amp;D and Python automation frameworks.</div>
+                <div class="tech">Python &middot; Perl &middot; Selenium &middot; MySQL &middot; Linux &middot; FreeBSD</div>
             </div>
         </section>
 
-        <!-- Education Section -->
+        <!-- Education -->
         <section id="education">
             <h2 class="section-title">Education</h2>
-            <div style="max-width: 750px; margin: 0 auto;">
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">M.Sc. in Electronics</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">National University "Lvivska Politechnika" &mdash; Radio Engineering Department</p>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">2000 &ndash; 2005 | Lviv, Ukraine</p>
-                </div>
-                <div style="margin-bottom: 1.5rem;">
-                    <h3 style="margin-bottom: 0.2rem; color: #333;">M.Sc. in Economics</h3>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">National University "Lvivska Politechnika" &mdash; Economic Department</p>
-                    <p style="color: #888; font-size: 0.95rem; margin: 0;">2004 &ndash; 2006 | Lviv, Ukraine</p>
-                </div>
+            <div class="edu">
+                <h3>M.Sc. in Electronics</h3>
+                <div class="meta">National University "Lvivska Politechnika" &mdash; 2000&ndash;2005, Lviv</div>
+            </div>
+            <div class="edu">
+                <h3>M.Sc. in Economics</h3>
+                <div class="meta">National University "Lvivska Politechnika" &mdash; 2004&ndash;2006, Lviv</div>
             </div>
         </section>
 
-        <!-- Presentations Section -->
-        <section id="projects">
+        <!-- Presentations -->
+        <section id="talks">
             <h2 class="section-title">Presentations</h2>
-            <ul>
+            <ul class="talks">
                 <li><a href="https://docs.google.com/presentation/d/e/2PACX-1vT7cYi7PTyEGCgidcvLDnNC9P9uHr1HTyFJWpZqs48Y9n2cMZ1aAssL-IL3XzGoPQ/pub?start=true&loop=false&delayms=3000&slide=id.p1" target="_blank">Agile Testing. Introduction</a></li>
                 <li><a href="https://www.slideshare.net/slideshow/selenium-practical-11743346/11743346" target="_blank">Selenium in Continuous Integration Environment</a></li>
-                <li><a href="https://www.linkedin.com/in/ruslanstraznhyk/overlay/50043164/single-media-viewer/" target="_blank">Full Featured Test Automation using Selenium Grid and Continuous Integration</a></li>
+                <li><a href="https://www.linkedin.com/in/ruslanstraznhyk/overlay/50043164/single-media-viewer/" target="_blank">Full Featured Test Automation using Selenium Grid and CI</a></li>
                 <li><a href="https://www.linkedin.com/in/ruslanstraznhyk/overlay/50043164/single-media-viewer/?profileId=ACoAAAC1W6MBhMtNX31vG0WNgDoDwLMuNK5pROY" target="_blank">Making Watir and Cucumber an Efficient Tool for Web UI Automation</a></li>
             </ul>
         </section>
 
-        <!-- Contact Section -->
+        <!-- Contact -->
         <section id="contact">
             <h2 class="section-title">Contact</h2>
-            <p>Email: <a href="mailto:strazhnyk@gmail.com">strazhnyk@gmail.com</a></p>
-            <p>LinkedIn: <a href="https://www.linkedin.com/in/ruslanstraznhyk/" target="_blank">My LinkedIn Profile</a></p>
-            <p>GitHub: <a href="https://github.com/Desperado" target="_blank">My GitHub Profile</a></p>
+            <div class="contact-grid">
+                <div class="contact-item">
+                    <div class="label">Email</div>
+                    <a href="mailto:strazhnyk@gmail.com">strazhnyk@gmail.com</a>
+                </div>
+                <div class="contact-item">
+                    <div class="label">LinkedIn</div>
+                    <a href="https://www.linkedin.com/in/ruslanstraznhyk/" target="_blank">ruslanstraznhyk</a>
+                </div>
+                <div class="contact-item">
+                    <div class="label">GitHub</div>
+                    <a href="https://github.com/Desperado" target="_blank">Desperado</a>
+                </div>
+                <div class="contact-item">
+                    <div class="label">QualityMax</div>
+                    <a href="https://qualitymax.io" target="_blank">qualitymax.io</a>
+                </div>
+            </div>
         </section>
+
     </div>
 
     <!-- Footer -->
     <footer>
-        &copy; 2026 Ruslan Strazhnyk. All rights reserved.
+        <div class="container">
+            &copy; 2026 Ruslan Strazhnyk
+        </div>
     </footer>
+
 </body>
 </html>
