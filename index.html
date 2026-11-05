@@ -3,18 +3,18 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ruslan Strazhnyk — Quality Engineering Leader & Founder of QualityMax</title>
+    <title>Ruslan Strazhnyk — QualityMax, 9lives &amp; Open Source</title>
 
     <!-- OG / Social Meta -->
-    <meta name="description" content="Engineering Leader and Founder with 20 years in software quality. Built QualityMax — AI-powered test automation — from scratch. Berlin, Germany.">
-    <meta property="og:title" content="Ruslan Strazhnyk — Quality Engineering Leader & Founder of QualityMax">
-    <meta property="og:description" content="20 years in software quality. Founder of QualityMax — AI-powered test automation platform. 3 products, 3 open source tools, 17+ companies.">
+    <meta name="description" content="Berlin-based quality engineering leader and founder of QualityMax. Building 9lives, AFTERHOURS, TokenHunger, and open-source tools for testing, AI, and music.">
+    <meta property="og:title" content="Ruslan Strazhnyk — QualityMax, 9lives &amp; Open Source">
+    <meta property="og:description" content="20 years in software quality. Building QualityMax, the 9lives Playwright runner, AFTERHOURS music studio, and practical open-source tools.">
     <meta property="og:image" content="https://desperado.github.io/images/S_Ruslan_profile_photo.jpg">
     <meta property="og:url" content="https://desperado.github.io">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
-    <meta name="twitter:title" content="Ruslan Strazhnyk — Quality Engineering Leader">
-    <meta name="twitter:description" content="Founder of QualityMax. 20 years in software quality. Berlin, Germany.">
+    <meta name="twitter:title" content="Ruslan Strazhnyk — QualityMax, 9lives &amp; Open Source">
+    <meta name="twitter:description" content="Quality engineering leader. Building QualityMax, 9lives, AFTERHOURS, and open-source tools. Berlin, Germany.">
 
     <!-- Favicon -->
     <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>%3E</text></svg>">
@@ -52,6 +52,10 @@
         }
         a:hover {
             color: #fff;
+        }
+        a:focus-visible {
+            outline: 2px solid #00ff88;
+            outline-offset: 4px;
         }
 
         .container {
@@ -99,7 +103,7 @@
             display: none;
         }
         nav a {
-            color: #555;
+            color: #888;
             font-size: 0.75rem;
             text-transform: uppercase;
             letter-spacing: 1.5px;
@@ -212,6 +216,7 @@
         /* Sections */
         section {
             margin-bottom: 3rem;
+            scroll-margin-top: 5rem;
         }
         .section-title {
             font-size: 0.85rem;
@@ -283,12 +288,12 @@
             margin-bottom: 0.8rem;
         }
         .product-card p {
-            color: #777;
+            color: #999;
             font-size: 0.85rem;
             margin-bottom: 0.8rem;
         }
         .product-card .tech {
-            color: #444;
+            color: #888;
             font-size: 0.78rem;
         }
         .product-card .link {
@@ -304,16 +309,44 @@
             background: #00ff88;
             color: #0a0a0a;
         }
-        .install-cmd {
-            background: #111;
-            border: 1px solid #222;
-            padding: 0.6rem 1rem;
-            font-size: 0.82rem;
-            color: #00ff88;
-            margin-top: 0.8rem;
-            display: inline-block;
-            cursor: pointer;
-            user-select: all;
+        .section-intro, .activity-caption {
+            color: #999;
+            font-size: 0.85rem;
+            margin-bottom: 1.5rem;
+        }
+        .project-grid {
+            display: grid;
+            grid-template-columns: repeat(2, minmax(0, 1fr));
+            gap: 1rem;
+        }
+        .project-grid .product-card {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-start;
+            margin-bottom: 0;
+            overflow-wrap: anywhere;
+        }
+        .project-grid .product-card .link {
+            margin-top: auto;
+        }
+        .activity-chart {
+            overflow-x: auto;
+            background: #0f0f0f;
+            border: 1px solid #1a1a1a;
+            padding: 1.2rem;
+            margin-bottom: 0.8rem;
+        }
+        .activity-chart img {
+            display: block;
+            width: 100%;
+            height: auto;
+            min-width: 600px;
+        }
+        .activity-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.6rem 1.5rem;
+            font-size: 0.85rem;
         }
 
         /* Experience */
@@ -410,6 +443,9 @@
 
         /* Responsive */
         @media (max-width: 600px) {
+            .project-grid {
+                grid-template-columns: 1fr;
+            }
             .container {
                 padding: 2rem 1.2rem;
             }
@@ -430,21 +466,26 @@
                 gap: 1rem;
             }
         }
+        @media (prefers-reduced-motion: reduce) {
+            html { scroll-behavior: auto; }
+            .cursor { animation: none; }
+        }
     </style>
 </head>
 <body>
 
     <!-- Top Banner -->
     <div class="top-banner">
-        Currently building <a href="https://qualitymax.io" target="_blank">QualityMax</a> &mdash; AI-powered test automation for modern teams
+        Building <a href="https://qualitymax.io" target="_blank">QualityMax</a> &amp; <a href="https://github.com/Quality-Max/9lives-runner" target="_blank">9lives</a> &mdash; independent verification for AI-written code
     </div>
 
     <!-- Navigation -->
-    <nav>
+    <nav aria-label="Main navigation">
         <div class="nav-inner">
             <a href="#about">About</a>
-            <a href="#products">Products</a>
+            <a href="#products">Projects</a>
             <a href="#opensource">Open Source</a>
+            <a href="#github-activity">GitHub</a>
             <a href="#experience">Experience</a>
             <a href="#talks">Talks</a>
             <a href="#contact">Contact</a>
@@ -457,7 +498,7 @@
         <header>
             <div class="prompt">$ whoami</div>
             <h1>Ruslan Strazhnyk<span class="cursor"></span></h1>
-            <div class="subtitle">Quality Engineering Leader | Founder of QualityMax | Full-Stack Builder</div>
+            <div class="subtitle">Quality Engineering Leader | Founder of QualityMax | Open-Source Builder</div>
             <div class="location">Berlin, Germany</div>
         </header>
 
@@ -472,12 +513,12 @@
                 <span class="label">Companies</span>
             </div>
             <div class="stat">
-                <span class="number">3</span>
-                <span class="label">Products</span>
+                <span class="number">4</span>
+                <span class="label">Featured Projects</span>
             </div>
             <div class="stat">
-                <span class="number">3</span>
-                <span class="label">Open Source</span>
+                <span class="number">OSS</span>
+                <span class="label">Built in Public</span>
             </div>
             <div class="stat">
                 <span class="number">2</span>
@@ -498,10 +539,13 @@
         <section id="about">
             <h2 class="section-title">About</h2>
             <p>
-                Engineering Leader and Founder with 20 years of experience in software quality and full-stack development. Built QualityMax &mdash; an AI-powered test automation platform &mdash; from the ground up: backend, frontend, AI pipeline, and CLI tooling. Adept at leading cross-functional teams through Quality Engineering and Shift-Left Testing methodologies across front-end, back-end, web, and mobile platforms.
+                I&rsquo;m a quality engineering leader and founder based in Berlin, with 20 years in software quality and full-stack development. I built <a href="https://qualitymax.io" target="_blank">QualityMax</a> from the ground up &mdash; backend, frontend, AI pipeline, and CLI tooling. Today I&rsquo;m building independent verification for AI-written code, including <a href="https://github.com/Quality-Max/9lives-runner" target="_blank">9lives</a>, a local Playwright runner with inspectable execution evidence.
             </p>
             <p>
-                Proven track record designing CI/CD solutions, building scalable testing frameworks, and shipping production SaaS products. Experienced in hiring, managing, and mentoring engineering teams. International conference speaker at Selenium Camp (Kyiv) and Software QS-TAG (Nuremberg).
+                My open-source work spans testing, AI, and music: <a href="https://github.com/Quality-Max/qmax-code" target="_blank">qmax-code</a> and QA skills for coding agents, <a href="https://github.com/Desperado/token-hunger" target="_blank">TokenHunger</a> for measuring model cost against correct results, and <a href="https://github.com/Desperado/afterhours-oss" target="_blank">AFTERHOURS</a>, a local music studio. I also build translation tools and music controllers.
+            </p>
+            <p>
+                I&rsquo;ve led and mentored engineering teams, designed CI/CD workflows, and built automation across web, mobile, APIs, and infrastructure. I&rsquo;ve spoken at Selenium Camp in Kyiv and Software QS-TAG in Nuremberg.
             </p>
 
             <h3 style="color: #555; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; margin: 1.5rem 0 0.8rem;">Core Stack</h3>
@@ -509,6 +553,12 @@
                 <span class="tech-tag">Python</span>
                 <span class="tech-tag">JavaScript</span>
                 <span class="tech-tag">TypeScript</span>
+                <span class="tech-tag">Go</span>
+                <span class="tech-tag">Rust / WebAssembly</span>
+                <span class="tech-tag">React / Next.js</span>
+                <span class="tech-tag">Expo</span>
+                <span class="tech-tag">MCP</span>
+                <span class="tech-tag">Web Audio</span>
                 <span class="tech-tag">FastAPI</span>
                 <span class="tech-tag">Vue.js</span>
                 <span class="tech-tag">Playwright</span>
@@ -533,70 +583,156 @@
 
         <!-- Products -->
         <section id="products">
-            <h2 class="section-title">Products</h2>
+            <h2 class="section-title">Featured Projects</h2>
 
             <div class="product-card">
                 <h3>QualityMax</h3>
-                <div class="tagline">AI-Powered Test Automation for Modern Teams</div>
+                <div class="tagline">Independent verification for AI-written code</div>
                 <p>
-                    Web, mobile, API, performance, security &mdash; one platform. Generate Playwright tests from specs, push to GitHub, auto-test every deploy. Self-healing scripts, visual regression, quality gates, and CI/CD integration out of the box.
+                    Turn websites, repositories, and specifications into runnable tests. Review cases, execute suites, inspect artifacts, and connect testing to pull requests and CI quality gates.
                 </p>
-                <div class="tech">Python/FastAPI &middot; Vue.js &middot; OpenAI/NLTK &middot; Playwright/Cypress &middot; PostgreSQL</div>
-                <br>
+                <div class="tech">Python / FastAPI &middot; Vue.js &middot; Playwright &middot; PostgreSQL</div>
                 <a href="https://qualitymax.io" target="_blank" class="link">qualitymax.io &rarr;</a>
+                <a href="https://github.com/Quality-Max/qualitymax" target="_blank" class="link">Ecosystem guide &rarr;</a>
             </div>
 
             <div class="product-card">
-                <h3>qmax-code</h3>
-                <div class="tagline">The first AI testing agent built for your terminal</div>
+                <h3>9lives</h3>
+                <div class="tagline">Keep Playwright. Inspect the evidence.</div>
                 <p>
-                    Generate, execute, and manage tests through natural language. AI-powered web crawling with vision, automatic Playwright test generation, k6 load testing, self-healing failures, and 50+ integrated tools &mdash; all from the command line.
+                    A native Go runner for existing Playwright projects, with bounded execution, validated run receipts, page checks, and MCP tools for coding agents. Experimental workflows verify locator repairs and compare the same test before and after a fix. Runs locally without a QualityMax account.
                 </p>
-                <div class="tech">15MB &middot; Zero dependencies &middot; macOS &middot; Linux &middot; Windows</div>
-                <div class="install-cmd">$ curl -sL https://qualitymax.io/static/install-qmax-code.txt | bash</div>
-                <br><br>
-                <a href="https://qualitymax.io/qmax-code" target="_blank" class="link">Learn more &rarr;</a>
+                <div class="tech">Go &middot; Playwright &middot; TypeScript SDK &middot; Apache 2.0</div>
+                <a href="https://9lives.run/demo.html#proof" target="_blank" class="link">Interactive demo &rarr;</a>
+                <a href="https://github.com/Quality-Max/9lives-runner" target="_blank" class="link">Source &rarr;</a>
+            </div>
+
+            <div class="product-card">
+                <h3>AFTERHOURS</h3>
+                <div class="tagline">A local music studio for making and exploring sound</div>
+                <p>
+                    Sequence sixteen-lane arrangements, play synths with a keyboard or USB MIDI controller, record performances, and export MIDI and WAV audio. Includes a listening workspace, live effects, local audio measurements, and optional AI musical feedback. Runs in the browser or as a macOS desktop app.
+                </p>
+                <div class="tech">Python &middot; JavaScript / Web Audio &middot; Rust / WebAssembly &middot; Electron &middot; Apache 2.0</div>
+                <a href="https://desperado.github.io/afterhours-oss/" target="_blank" class="link">Explore AFTERHOURS &rarr;</a>
+                <a href="https://github.com/Desperado/afterhours-oss" target="_blank" class="link">Source &amp; downloads &rarr;</a>
+            </div>
+
+            <div class="product-card">
+                <h3>TokenHunger</h3>
+                <div class="tagline">Compare models by cost per correct result</div>
+                <p>
+                    Benchmark models, HTTP APIs, and local agent pipelines on the same cases. Compare pass rates, latency, and cost per successful outcome, so failed answers count toward the real price. Includes a Python CLI, local web UI, and exportable reports.
+                </p>
+                <div class="tech">Python &middot; LiteLLM &middot; CLI &amp; web UI</div>
+                <a href="https://tokenhunger.com" target="_blank" class="link">tokenhunger.com &rarr;</a>
+                <a href="https://github.com/Desperado/token-hunger" target="_blank" class="link">Source &rarr;</a>
             </div>
         </section>
 
         <!-- Open Source -->
         <section id="opensource">
             <h2 class="section-title">Open Source</h2>
+            <p class="section-intro">More tools from <a href="https://github.com/Quality-Max" target="_blank">Quality-Max</a> and <a href="https://github.com/Desperado" target="_blank">my personal GitHub</a>. Explore the repositories for source, setup, licenses, and current project status.</p>
 
-            <div class="product-card">
-                <h3>linkedin-shield</h3>
-                <div class="tagline">Chrome Extension</div>
-                <p>Block LinkedIn's hidden extension scanning, device fingerprinting, and tracker probes. Optional AI analysis.</p>
-                <a href="https://github.com/Quality-Max/linkedin-shield" target="_blank" class="link">GitHub &rarr;</a>
-            </div>
+            <div class="project-grid">
+                <div class="product-card">
+                    <h3>qmax-code</h3>
+                    <div class="tagline">An open-source QA terminal</div>
+                    <p>A Go terminal agent for repository work and testing. Use it locally, connect to QualityMax, or orchestrate coding agents through shared QA tools. Apache 2.0.</p>
+                    <a href="https://github.com/Quality-Max/qmax-code" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
 
-            <div class="product-card">
-                <h3>qualitymax-grader</h3>
-                <div class="tagline">Lighthouse for test quality</div>
-                <p>Grade your Playwright tests A&ndash;F. No API keys, no cloud, runs in 2 seconds. Works with any test source &mdash; hand-written, Claude-generated, Copilot-generated.</p>
-                <a href="https://github.com/Quality-Max/qualitymax-grader" target="_blank" class="link">GitHub &rarr;</a>
-            </div>
+                <div class="product-card">
+                    <h3>free-qa-skills</h3>
+                    <div class="tagline">QA skills for coding agents</div>
+                    <p>Focused checks for accessibility, performance, security, privacy, SEO, and test quality. Use them in your coding agent without a QualityMax account.</p>
+                    <a href="https://github.com/Quality-Max/free-qa-skills" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
 
-            <div class="product-card">
-                <h3>supply-chain-scanner</h3>
-                <div class="tagline">Detect supply chain attacks in Python dependencies</div>
-                <p>Catches .pth injection, encoding obfuscation, typosquatting, and compromised packages. Zero dependencies, runs in 2 seconds.</p>
-                <a href="https://github.com/Quality-Max/supply-chain-scanner" target="_blank" class="link">GitHub &rarr;</a>
+                <div class="product-card">
+                    <h3>qualitymax-grader</h3>
+                    <div class="tagline">Lighthouse for test quality</div>
+                    <p>Grade Playwright tests A&ndash;F, whether written by a person or generated by an agent. Runs locally without API keys or a cloud service.</p>
+                    <a href="https://github.com/Quality-Max/qualitymax-grader" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>supply-chain-scanner</h3>
+                    <div class="tagline">Inspect Python dependencies</div>
+                    <p>Check for supply chain attack patterns, including .pth injection, encoding obfuscation, typosquatting, and compromised packages.</p>
+                    <a href="https://github.com/Quality-Max/supply-chain-scanner" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>linkedin-shield</h3>
+                    <div class="tagline">Browser privacy tools</div>
+                    <p>A Chrome extension to block LinkedIn extension scanning, device fingerprinting, and tracker probes, with optional AI analysis.</p>
+                    <a href="https://github.com/Quality-Max/linkedin-shield" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>qmax-local-agent</h3>
+                    <div class="tagline">Bring cloud testing to your network</div>
+                    <p>A cross-platform CLI and execution agent for QualityMax. Run Playwright locally and crawl apps behind VPNs, firewalls, or on localhost.</p>
+                    <a href="https://github.com/Quality-Max/qmax-local-agent" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>qmax-receipt</h3>
+                    <div class="tagline">Signed records of outbound requests</div>
+                    <p>A shared Go schema for exposure receipts. Integrating apps record destinations, byte sizes, and content hashes without storing request payloads.</p>
+                    <a href="https://github.com/Quality-Max/qmax-receipt" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>Loqui</h3>
+                    <div class="tagline">Live translation &amp; writing tools</div>
+                    <p>Streaming voice translation across nine languages, speech playback, and external subtitles. Includes a Humanize writing workspace and local MCP server.</p>
+                    <a href="https://github.com/Desperado/loqui" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>Venture-Ops</h3>
+                    <div class="tagline">Fundraising workflows for founders</div>
+                    <p>Claude Code skills for investor discovery, pitch-deck refreshes, application drafts, and pipeline tracking. Founders decide what gets sent.</p>
+                    <a href="https://github.com/Desperado/venture-ops" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>Mosaicast</h3>
+                    <div class="tagline">An independent MusicCast controller</div>
+                    <p>An early mobile controller for Yamaha devices, built with Expo and TypeScript. Local discovery, playback controls, and English/Ukrainian UI; not yet a store release.</p>
+                    <a href="https://github.com/Desperado/mosaicast" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>Frame Music</h3>
+                    <div class="tagline">MusicCast on Samsung TV</div>
+                    <p>A community TV app for browsing music and choosing Yamaha sources over the home network, with phone coordination through Mosaicast.</p>
+                    <a href="https://github.com/Desperado/frame-music" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
+
+                <div class="product-card">
+                    <h3>MCP Avatar Builder</h3>
+                    <div class="tagline">Composable avatars for agents</div>
+                    <p>Generate avatars through SVG layer composition. Available as an MCP server and an installable skill for coding agents.</p>
+                    <a href="https://github.com/Desperado/mcp-avatar-builder" target="_blank" class="link">GitHub &rarr;</a>
+                </div>
             </div>
         </section>
 
         <!-- GitHub Activity -->
         <section id="github-activity">
             <h2 class="section-title">GitHub Activity</h2>
-            <div style="overflow-x: auto; background: #0f0f0f; border: 1px solid #1a1a1a; padding: 1.2rem; border-radius: 0;">
-                <picture>
-                    <img src="https://ghchart.rshah.org/00ff88/Desperado" alt="GitHub contributions in the last year" style="width: 100%; min-width: 600px;">
-                </picture>
+            <div class="activity-chart">
+                <img src="https://ghchart.rshah.org/00ff88/Desperado" alt="Ruslan Strazhnyk's GitHub contributions in the last year" loading="lazy" width="663" height="104">
             </div>
-            <p style="color: #444; font-size: 0.78rem; margin-top: 0.6rem;">
-                <span style="color: #00ff88; font-weight: 700;">2,273</span> contributions in the last year &mdash;
-                <a href="https://github.com/Desperado" target="_blank" style="font-size: 0.78rem;">github.com/Desperado</a>
-            </p>
+            <p class="activity-caption">Contributions in the last year, refreshed by the chart provider. See GitHub for the current totals and activity across my personal projects and Quality-Max.</p>
+            <div class="activity-links">
+                <a href="https://github.com/Desperado?tab=overview" target="_blank">Personal contributions &rarr;</a>
+                <a href="https://github.com/Quality-Max" target="_blank">Quality-Max repositories &rarr;</a>
+            </div>
         </section>
 
         <!-- Experience -->
@@ -606,7 +742,7 @@
             <div class="job">
                 <h3>Quality Max &mdash; Founder &amp; CEO</h3>
                 <div class="meta">Berlin | Apr 2025 &ndash; Present</div>
-                <div class="desc">AI-Powered QA Platform leveraging RAG technology for intelligent test generation and comprehensive test automation.</div>
+                <div class="desc">Building independent verification for AI-written code: the QualityMax platform, 9lives Playwright runner, qmax-code terminal, and open-source QA tools.</div>
                 <div class="tech">Python/FastAPI &middot; Vue.js &middot; OpenAI/NLTK/Giskard &middot; Playwright/Cypress/pytest &middot; PostgreSQL</div>
             </div>
 
